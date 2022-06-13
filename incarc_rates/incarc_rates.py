@@ -42,8 +42,8 @@ sns.set(font_scale = 0.9)
 plt.tight_layout()
 
 # display and save figure
-plt.show()
 plt.savefig('incarc_gender_ratio.png')
+plt.show()
 
 # save final dataframe to csv
 incarc_rates.to_csv("output/us_incarceration_gender_ratios_2010.csv", index=False)

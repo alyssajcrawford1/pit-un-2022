@@ -29,7 +29,14 @@ incarc_rates = incarc_rates.join(incarc_rates_women)
 # create ratio column
 incarc_rates['Men:Women'] = incarc_rates['Male incarceration rate'] / incarc_rates['Female incarceration rate']
 
-print(incarc_rates)
+# print(incarc_rates)
+
+ax = sns.barplot(x=incarc_rates.index, y="Men:Women", data=incarc_rates)
+ax.tick_params(axis='x', rotation=90)
+ax.set(xlabel = "", 
+        ylabel = "Ratio of Male:Female Incarceration Rates",
+        title = "Male:Female Incarceration Rates in US")
+plt.show()
 
 
 

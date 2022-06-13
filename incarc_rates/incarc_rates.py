@@ -26,6 +26,9 @@ incarc_rates_women = incarc_data_women[['Geography', 'Female incarceration rate'
 incarc_rates = incarc_rates_men.copy()
 incarc_rates = incarc_rates.join(incarc_rates_women)
 
+# create ratio column
+incarc_rates['Men:Women'] = incarc_rates['Male incarceration rate'] / incarc_rates['Female incarceration rate']
+
 print(incarc_rates)
 
 

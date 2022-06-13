@@ -46,7 +46,7 @@ plt.show()
 plt.savefig('incarc_gender_ratio.png')
 
 # save final dataframe to csv
-incarc_rates.to_csv("output/us_incarceration_gender_ratios_2010.csv", index=False)
+incarc_rates.to_csv("data/us_incarceration_gender_ratios_2010.csv", index=False)
 
 
 

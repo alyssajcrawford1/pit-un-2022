@@ -17,16 +17,16 @@ incarc_data_women = pd.read_excel('data/race_ethnicity_gender_2010.xlsx',
         sheet_name = "Women",
         skiprows = 4,
         skipfooter = 1)
-incarc_data_total = pd.read_excel('data/race_ethnicity_gender_2010.xlsx',
-        sheet_name = "Men+Women",
-        skiprows = 4,
-        skipfooter = 1)
 
 # isolate only the total rate values, remove race/ethnicity data
-incarc_rates_men = incarc_data_men[['Geography', 'Male incarceration rate']]
-incarc_rates_women = incarc_data_women[['Geography', 'Female incarceration rate']]
+incarc_rates_men = incarc_data_men[['Geography', 'Male incarceration rate']].set_index("Geography")
+incarc_rates_women = incarc_data_women[['Geography', 'Female incarceration rate']].set_index("Geography")
 
+# join the two dataframes on geography column
+incarc_rates = incarc_rates_men.copy()
+incarc_rates = incarc_rates.join(incarc_rates_women)
 
+print(incarc_rates)
 
 
 

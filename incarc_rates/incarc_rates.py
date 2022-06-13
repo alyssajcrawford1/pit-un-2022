@@ -41,6 +41,9 @@ ax.set(xlabel = "Ratio of Male:Female Incarceration Rates",
 sns.set(font_scale = 0.9)
 plt.tight_layout()
 plt.show()
+plt.savefig('incarc_gender_ratio.png')
+
+incarc_rates.to_csv("output/us_incarceration_gender_ratios_2010.csv", index=False)
 
 
 

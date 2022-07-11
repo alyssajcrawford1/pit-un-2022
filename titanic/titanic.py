@@ -11,6 +11,7 @@ test_data = pd.read_csv("titanic/data/test.csv")  # no "Survived" attribute
 # Create a sex column encoded numerically
 train_data['Sex2'] = train_data.Sex.apply(lambda x: 0 if x == 'male' else 1)
 test_data['Sex2'] = test_data.Sex.apply(lambda x: 0 if x == 'male' else 1)
+# Nevermind, use get_dummies() ?
 
 # Fill age N/As
 train_data['Age'] = train_data['Age'].fillna(train_data['Age'].mean())
@@ -20,18 +21,16 @@ test_data['Age'] = test_data['Age'].fillna(train_data['Age'].mean())
 # Grab features to use in models
 y = train_data["Survived"]
 features = ["Pclass", "SibSp", "Parch", "Sex2", "Age"] # , "Fare"]
-
-
+X = pd.get_dummies(train_data[features])
+X_test = pd.get_dummies(test_data[features])
 
 
 # RANDOM FOREST
 # train using data, build model
-X = pd.get_dummies(train_data[features])
 model = RandomForestClassifier(n_estimators=100, max_depth=5, random_state=1)
 model.fit(X, y)
 
 # use model to predict test data survival
-X_test = pd.get_dummies(test_data[features])
 predictions = model.predict(X_test)
 
 # save model results as csv

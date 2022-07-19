@@ -9,13 +9,16 @@ train_data = pd.read_csv("titanic/data/train.csv")  # contains a "Survived" attr
 test_data = pd.read_csv("titanic/data/test.csv")  # no "Survived" attribute
 
 # Create a sex column encoded numerically
-train_data['Sex2'] = train_data.Sex.apply(lambda x: 0 if x == 'male' else 1)
-test_data['Sex2'] = test_data.Sex.apply(lambda x: 0 if x == 'male' else 1)
-# Nevermind, use get_dummies() ?
+# train_data['Sex2'] = train_data.Sex.apply(lambda x: 0 if x == 'male' else 1)
+# test_data['Sex2'] = test_data.Sex.apply(lambda x: 0 if x == 'male' else 1)
+# Nevermind, use get_dummies()
 
 # Fill age N/As
 train_data['Age'] = train_data['Age'].fillna(train_data['Age'].mean())
 test_data['Age'] = test_data['Age'].fillna(train_data['Age'].mean())
+
+# Could do some feature engineering here ...
+
 
 
 # Grab features to use in models
